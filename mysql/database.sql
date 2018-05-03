@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS `Device`( `id` int auto_increment, `device_id` int not null,  `device_name` varchar(50) not null, `parameter` varchar(20),`value` double,`Date` timestamp,primary key(`id`));

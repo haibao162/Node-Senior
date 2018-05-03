@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+<span>age:</span><input type="text" id="age" value='100'><br><br>
+<span>salary:</span><input type="text" id="salary"><br><br>
+<span>editId:</span><input type="text" id="key"><br><br>
+<input type="button" name="" onclick="submit()" value="插入job里">
+<input type="button" name="" onclick="edit()" value="更新job">
+</body>
+<script>
+function submit(){
+	var data = {};
+	data.age = document.getElementById('age').value;
+	data.salary = document.getElementById('salary').value;
+	console.log(data);
+	$.ajax({
+    url: 'http://localhost:3000/device/insertJob',
+    type: 'POST',
+    data: data,
+    success: function(result){
+      alert(result);
+   }
+  });
+}
+
+function edit(){
+	var data = {};
+	data.age = document.getElementById('age').value;
+	data.salary = document.getElementById('salary').value;
+	//data.id = document.getElementById('key').value;
+	$.ajax({
+    url: 'http://localhost:3000/device/editJob/'+document.getElementById('key').value,
+    type: 'PUT',
+    data: data,
+    success: function(result){
+    console.log(result);   
+	}
+  });
+}
+</script>
+</html>
