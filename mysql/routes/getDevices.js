@@ -42,7 +42,7 @@ router.post('/insertJob',function(req,res){
 
 var student_job_product = 'select a.*,b.productName,b.date,c.age,c.salary from haibao.student as a '
 						+'left join haibao.product as b on a.productID=b.id '
-						+'left join haibao.job as c on a.jobID=c.id'; 
+						+'left join haibao.job as c on a.jobID=c.id';
 router.get('/join',function(req,res){
 	device.getList(mysql,student_job_product).then(function(result){
 		res.send(result);
@@ -81,6 +81,6 @@ router.get('/mutipleRecord/:salary',function(req,res){
 		console.log(data);
 	},function(err){
 		console.log('errrrrrr:' + err);
-	}); 
+	});
 });
 module.exports = router;

@@ -11,6 +11,7 @@
 <span>editId:</span><input type="text" id="key"><br><br>
 <input type="button" name="" onclick="submit()" value="插入job里">
 <input type="button" name="" onclick="edit()" value="更新job">
+<input type="button" name="" onclick="getCookie()" value="查询cookie">
 </body>
 <script>
 function submit(){
@@ -38,9 +39,23 @@ function edit(){
     type: 'PUT',
     data: data,
     success: function(result){
-    console.log(result);   
+    console.log(result);
 	}
   });
+}
+function getCookie(){
+    var data = {};
+    console.log(document.cookie);
+    $.ajax({
+        contentType: 'application/json',
+		cookie: document.cookie,
+        url: 'http://localhost:3000/cookie',
+        type: 'POST',
+        data: data,
+        success: function(result){
+            console.log('response return: ', result);
+        }
+    });
 }
 </script>
 </html>
